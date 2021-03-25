@@ -1,0 +1,46 @@
+server:
+  port: 8090
+spring:
+  application:
+    name:
+  datasource:
+    url: jdbc:postgresql://${DB_RESULT_URL:localhost}:${DB_RESULT_URL:5432}/${DB_RESULT_URL:result}
+    username: ${DB_RESULT_URL:postgres}
+    password: ${DB_RESULT_URL:postgres}
+    hikari:
+      connection-timeout: 5000
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL10Dialect
+performance:
+  test:
+    databases:
+      active-users:
+        datasource:
+          url: jdbc:postgresql://${DB_USERS_URL:localhost}:${DB_USERS_PORT:5442}/${DB_USERS_NAME:users}
+          username: ${DB_USERS_USER:postgres}
+          password: ${DB_USERS_PASSWORD:postgres}
+          hikari:
+            pool-name: users-hikari-pool
+            connection-timeout: 5000
+      legacy-users:
+        datasource:
+          url: jdbc:postgresql://${DB_LEGACY_USERS_URL:localhost}:${DB_LEGACY_USERS_URL:5443}/${DB_LEGACY_USERS_URL:legacy-users}
+          username: ${DB_LEGACY_USERS_URL:postgres}
+          password: ${DB_LEGACY_USERS_URL:postgres}
+          hikari:
+            pool-name: legacy-users-hikari-pool
+            connection-timeout: 5000
+      inactive-users:
+        datasource:
+          url: jdbc:postgresql://${DB_INACTIVE_USERS_URL:localhost}:${DB_INACTIVE_USERS_URL:5444}/${DB_INACTIVE_USERS_URL:inactive-users}
+          username: ${DB_INACTIVE_USERS_URL:postgres}
+          password: ${DB_INACTIVE_USERS_URL:postgres}
+          hikari:
+            pool-name: inactive-users-hikari-pool
+            connection-timeout: 5000
