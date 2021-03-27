@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.test'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '14'
 
 configurations {
     compileOnly {
@@ -19,11 +19,13 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
-    implementation "org.springframework.boot:spring-boot-starter-web"
+    compile 'org.springframework.boot:spring-boot-starter'
+    compile "org.springframework.boot:spring-boot-starter-web"
     compile "org.postgresql:postgresql:${postgreSqlVersion}"
     compile "org.springframework.boot:spring-boot-starter-data-jpa"
+    compile "org.hibernate:hibernate-validator:6.1.6.Final"
     compileOnly 'org.projectlombok:lombok'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     annotationProcessor 'org.projectlombok:lombok'

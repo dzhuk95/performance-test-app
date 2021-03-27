@@ -6,8 +6,6 @@ import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,10 +31,6 @@ public class ExecutedQueries implements Persistable<Long>, Serializable {
     @Basic(optional = false)
     @Column(nullable = false, unique = true)
     String query;
-
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    DatabaseType databaseType;
 
     @Override
     public boolean isNew() {

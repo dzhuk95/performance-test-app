@@ -1,7 +1,7 @@
-package com.performance.users;
+package com.performance.users.service;
 
-import com.performance.result.QueryExecutionResultService;
-import com.performance.result.dao.DatabaseType;
+import com.performance.result.service.ExecutionQueryResultService;
+import com.performance.result.dto.DatabaseType;
 import com.performance.result.dto.CreatExecutionQueryResultDto;
 import java.util.function.Consumer;
 import lombok.AccessLevel;
@@ -13,21 +13,21 @@ import org.springframework.stereotype.Service;
 
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class UserService {
+public class UsersService {
 
     JdbcTemplate activeUsersJdbcTemplate;
     JdbcTemplate legacyUsersJdbcTemplate;
     JdbcTemplate inactiveUsersJdbcTemplate;
-    QueryExecutionResultService queryExecutionResultService;
+    ExecutionQueryResultService executionQueryResultService;
 
-    public UserService(@Qualifier("activeUsersJdbcTemplate") JdbcTemplate activeUsersJdbcTemplate,
-                       @Qualifier("legacyUsersJdbcTemplate") JdbcTemplate legacyUsersJdbcTemplate,
-                       @Qualifier("inactiveUsersJdbcTemplate") JdbcTemplate inactiveUsersJdbcTemplate,
-                       QueryExecutionResultService queryExecutionResultService) {
+    public UsersService(@Qualifier("activeUsersJdbcTemplate") JdbcTemplate activeUsersJdbcTemplate,
+                        @Qualifier("legacyUsersJdbcTemplate") JdbcTemplate legacyUsersJdbcTemplate,
+                        @Qualifier("inactiveUsersJdbcTemplate") JdbcTemplate inactiveUsersJdbcTemplate,
+                        ExecutionQueryResultService executionQueryResultService) {
         this.activeUsersJdbcTemplate = activeUsersJdbcTemplate;
         this.legacyUsersJdbcTemplate = legacyUsersJdbcTemplate;
         this.inactiveUsersJdbcTemplate = inactiveUsersJdbcTemplate;
-        this.queryExecutionResultService = queryExecutionResultService;
+        this.executionQueryResultService = executionQueryResultService;
     }
 
     @Async
@@ -50,6 +50,6 @@ public class UserService {
         final CreatExecutionQueryResultDto creatExecutionQueryResultDto =
                 CreatExecutionQueryResultDto.builder().query(query).databaseType(type).executionDelta(end - start)
                         .build();
-        queryExecutionResultService.saveQueryExecutionResult(creatExecutionQueryResultDto);
+        executionQueryResultService.saveQueryExecutionResult(creatExecutionQueryResultDto);
     }
 }

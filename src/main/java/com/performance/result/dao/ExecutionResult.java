@@ -1,7 +1,11 @@
 package com.performance.result.dao;
 
+import com.performance.result.dto.DatabaseType;
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -39,6 +43,10 @@ public class ExecutionResult implements Persistable<Long> {
     @JoinColumn(name = "query_id")
     @ManyToOne(fetch = FetchType.LAZY)
     ExecutedQueries query;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    DatabaseType databaseType;
 
     @Override
     public boolean isNew() {

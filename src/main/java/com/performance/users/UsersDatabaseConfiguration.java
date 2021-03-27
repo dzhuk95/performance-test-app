@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @Configuration
-public class UserDatabaseConfiguration {
+public class UsersDatabaseConfiguration {
 
     @Bean
     @ConfigurationProperties("performance.test.databases.active-users.datasource")

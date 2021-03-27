@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ExecutedQueriesRepository extends JpaRepository<ExecutedQueries, Long> {
 
-    Optional<ExecutedQueries> findByQueryEqualsIgnoreCaseAndDatabaseType(String query, DatabaseType databaseType);
+    Optional<ExecutedQueries> findByQueryEqualsIgnoreCase(String query);
 }
