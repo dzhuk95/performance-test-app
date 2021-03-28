@@ -8,7 +8,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: result
     ports:
-      - "5432:5432"
+      - "5332:5432"
   active-users-db:
     container_name: active-users-postgres
     volumes:
@@ -20,3 +20,25 @@ services:
       POSTGRES_DB: active-users
     ports:
       - "5442:5432"
+  legacy-users-db:
+    container_name: legacy-users-postgres
+    volumes:
+      - ./databases/users/legacy/:/docker-entrypoint-initdb.d/
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: legacy-users
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: legacy-users
+    ports:
+      - "5443:5432"
+  inactive-users-db:
+    container_name: inactive-users-postgres
+    volumes:
+      - ./databases/users/inactive/:/docker-entrypoint-initdb.d/
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: inactive-users
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: inactive-users
+    ports:
+      - "5444:5432"

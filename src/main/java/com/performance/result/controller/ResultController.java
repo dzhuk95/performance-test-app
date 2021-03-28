@@ -1,4 +1,4 @@
-package com.performance.result;
+package com.performance.result.controller;
 
 import com.performance.result.dto.ExecutedQueriesResultDto;
 import com.performance.result.dto.GetExecutionResultDto;

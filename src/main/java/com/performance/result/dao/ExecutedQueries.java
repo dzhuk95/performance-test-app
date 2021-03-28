@@ -1,6 +1,5 @@
 package com.performance.result.dao;
 
-
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Basic;
@@ -25,7 +24,7 @@ public class ExecutedQueries implements Persistable<Long>, Serializable {
     static final long serialVersionUID = -5280125841166807222L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SOME_SEQ")
     Long id;
 
     @Basic(optional = false)

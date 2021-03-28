@@ -15,6 +15,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -24,6 +25,7 @@ public class ExecutionQueryResultService {
     ExecutedQueriesRepository executedQueriesRepository;
     ExecutionResultRepository executionResultRepository;
 
+    @Transactional
     public void saveQueryExecutionResult(CreatExecutionQueryResultDto dto) {
         final ExecutedQueries executedQuery = executedQueriesRepository
                 .findByQueryEqualsIgnoreCase(dto.getQuery())

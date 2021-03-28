@@ -34,7 +34,7 @@ import org.springframework.data.domain.Persistable;
 public class ExecutionResult implements Persistable<Long> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SOME_SEQ")
     Long id;
 
     Long executionTimeDelta;

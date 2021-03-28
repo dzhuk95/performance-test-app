@@ -1,4 +1,4 @@
-package com.performance.result;
+package com.performance.result.controller;
 
 import javax.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;

@@ -7,57 +7,59 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.scheduling.annotation.EnableAsync;
 
+@EnableAsync
 @Configuration
-public class UsersDatabaseConfiguration {
+public class UsersConfiguration {
 
-    @Bean
+    @Bean(name = "activeUsersDataSourceProperties")
     @ConfigurationProperties("performance.test.databases.active-users.datasource")
     public DataSourceProperties activeUsersDataSourceProperties() {
         return new DataSourceProperties();
     }
 
-    @Bean
+    @Bean(name = "activeUsersDatasource")
     @ConfigurationProperties("performance.test.databases.active-users.datasource.hikari")
     public HikariDataSource activeUsersDatasource() {
         return createDataSource(activeUsersDataSourceProperties());
     }
 
-    @Bean
+    @Bean(name = "activeUsersJdbcTemplate")
     public JdbcTemplate activeUsersJdbcTemplate() {
         return createJdbcTemplate(activeUsersDatasource(), 10);
     }
 
-    @Bean
+    @Bean(name = "legacyUsersDataSourceProperties")
     @ConfigurationProperties("performance.test.databases.legacy-users.datasource")
     public DataSourceProperties legacyUsersDataSourceProperties() {
         return new DataSourceProperties();
     }
 
-    @Bean
+    @Bean(name = "legacyUsersDatasource")
     @ConfigurationProperties("performance.test.databases.legacy-users.datasource.hikari")
     public HikariDataSource legacyUsersDatasource() {
         return createDataSource(legacyUsersDataSourceProperties());
     }
 
-    @Bean
+    @Bean(name = "legacyUsersJdbcTemplate")
     public JdbcTemplate legacyUsersJdbcTemplate() {
         return createJdbcTemplate(legacyUsersDatasource(), 15);
     }
 
-    @Bean
+    @Bean(name = "inactiveUsersDataSourceProperties")
     @ConfigurationProperties("performance.test.databases.inactive-users.datasource")
     public DataSourceProperties inactiveUsersDataSourceProperties() {
         return new DataSourceProperties();
     }
 
-    @Bean
+    @Bean(name = "inactiveUsersDatasource")
     @ConfigurationProperties("performance.test.databases.inactive-users.datasource.hikari")
     public HikariDataSource inactiveUsersDatasource() {
         return createDataSource(inactiveUsersDataSourceProperties());
     }
 
-    @Bean
+    @Bean(name = "inactiveUsersJdbcTemplate")
     public JdbcTemplate inactiveUsersJdbcTemplate() {
         return createJdbcTemplate(inactiveUsersDatasource(), 20);
     }

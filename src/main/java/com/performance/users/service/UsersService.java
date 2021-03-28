@@ -1,8 +1,8 @@
 package com.performance.users.service;
 
-import com.performance.result.service.ExecutionQueryResultService;
-import com.performance.result.dto.DatabaseType;
 import com.performance.result.dto.CreatExecutionQueryResultDto;
+import com.performance.result.dto.DatabaseType;
+import com.performance.result.service.ExecutionQueryResultService;
 import java.util.function.Consumer;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
