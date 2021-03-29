@@ -37,6 +37,7 @@ public class ExecutionResult implements Persistable<Long> {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "SOME_SEQ")
     Long id;
 
+    @Column(name = "execution_time_delta")
     Long executionTimeDelta;
 
     @Fetch(FetchMode.JOIN)
@@ -44,7 +45,7 @@ public class ExecutionResult implements Persistable<Long> {
     @ManyToOne(fetch = FetchType.LAZY)
     ExecutedQueries query;
 
-    @Column(nullable = false)
+    @Column(name = "database_type",nullable = false)
     @Enumerated(EnumType.STRING)
     DatabaseType databaseType;
 

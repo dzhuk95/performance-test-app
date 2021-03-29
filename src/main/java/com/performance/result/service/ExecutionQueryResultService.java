@@ -25,7 +25,6 @@ public class ExecutionQueryResultService {
     ExecutedQueriesRepository executedQueriesRepository;
     ExecutionResultRepository executionResultRepository;
 
-    @Transactional
     public void saveQueryExecutionResult(CreatExecutionQueryResultDto dto) {
         final ExecutedQueries executedQuery = executedQueriesRepository
                 .findByQueryEqualsIgnoreCase(dto.getQuery())
