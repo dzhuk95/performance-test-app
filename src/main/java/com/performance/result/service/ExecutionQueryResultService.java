@@ -4,7 +4,7 @@ import com.performance.result.dao.ExecutedQueries;
 import com.performance.result.dao.ExecutedQueriesRepository;
 import com.performance.result.dao.ExecutionResult;
 import com.performance.result.dao.ExecutionResultRepository;
-import com.performance.result.dto.CreatExecutionQueryResultDto;
+import com.performance.result.dto.CreateExecutionQueryResultDto;
 import com.performance.result.dto.DatabaseType;
 import com.performance.result.dto.ExecutedQueriesResultDto;
 import java.util.Comparator;
@@ -25,7 +25,7 @@ public class ExecutionQueryResultService {
     ExecutedQueriesRepository executedQueriesRepository;
     ExecutionResultRepository executionResultRepository;
 
-    public void saveQueryExecutionResult(CreatExecutionQueryResultDto dto) {
+    public void saveQueryExecutionResult(CreateExecutionQueryResultDto dto) {
         final ExecutedQueries executedQuery = executedQueriesRepository
                 .findByQueryEqualsIgnoreCase(dto.getQuery())
                 .orElseGet(() -> createQuery(dto));
@@ -36,7 +36,7 @@ public class ExecutionQueryResultService {
         executionResultRepository.save(executionResult);
     }
 
-    private ExecutedQueries createQuery(CreatExecutionQueryResultDto dto) {
+    private ExecutedQueries createQuery(CreateExecutionQueryResultDto dto) {
         final ExecutedQueries executedQueries =
                 new ExecutedQueries().setQuery(dto.getQuery());
         return executedQueriesRepository.save(executedQueries);

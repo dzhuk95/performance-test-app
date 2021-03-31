@@ -10,7 +10,7 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CreatExecutionQueryResultDto {
+public class CreateExecutionQueryResultDto {
 
     String query;
     Long executionDelta;

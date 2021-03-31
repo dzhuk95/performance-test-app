@@ -3,6 +3,7 @@ package com.performance.result.controller;
 import com.performance.result.dto.ExecutedQueriesResultDto;
 import com.performance.result.dto.GetExecutionResultDto;
 import com.performance.result.service.ExecutionQueryResultService;
+import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ public class ResultController {
     ExecutionQueryResultService executionQueryResultService;
 
     @PostMapping
+    @ApiOperation(value = "Get sql query execution results")
     public List<ExecutedQueriesResultDto> getExecutionResult(@RequestBody @Validated GetExecutionResultDto dto) {
         return executionQueryResultService.getExecutedQueriesResults(dto.getQuery(), dto.getDatabaseType());
     }

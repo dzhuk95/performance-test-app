@@ -1,6 +1,6 @@
 package com.performance.users.service;
 
-import com.performance.result.dto.CreatExecutionQueryResultDto;
+import com.performance.result.dto.CreateExecutionQueryResultDto;
 import com.performance.result.dto.DatabaseType;
 import com.performance.result.service.ExecutionQueryResultService;
 import java.util.function.Consumer;
@@ -47,9 +47,9 @@ public class UsersService {
         final long start = System.currentTimeMillis();
         consumer.accept(query);
         final long end = System.currentTimeMillis();
-        final CreatExecutionQueryResultDto creatExecutionQueryResultDto =
-                CreatExecutionQueryResultDto.builder().query(query).databaseType(type).executionDelta(end - start)
+        final CreateExecutionQueryResultDto createExecutionQueryResultDto =
+                CreateExecutionQueryResultDto.builder().query(query).databaseType(type).executionDelta(end - start)
                         .build();
-        executionQueryResultService.saveQueryExecutionResult(creatExecutionQueryResultDto);
+        executionQueryResultService.saveQueryExecutionResult(createExecutionQueryResultDto);
     }
 }
